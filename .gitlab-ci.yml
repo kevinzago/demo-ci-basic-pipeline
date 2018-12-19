@@ -5,10 +5,11 @@ stages:
 build:
   stage: build
   script:
-    - echo "this is building on $(hostname)"
+    - echo "this is building" 
+    - hostname
     - mkdir builds
     - touch builds/data.txt
-    - echo "false" > builds/data.txt
+    - echo "true" > builds/data.txt
   artifacts:
     paths:
       - builds/
@@ -16,6 +17,7 @@ build:
 test:
   stage: test
   script:
-    - echo "this is testing on $(hostname)"
+    - echo "this is testing"
+    - hostname
     - test -f builds/data.txt
     - grep "true" builds/data.txt
